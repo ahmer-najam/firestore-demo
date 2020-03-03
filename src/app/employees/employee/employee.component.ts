@@ -3,6 +3,7 @@ import { EmployeeService } from "src/app/shared/employee.service";
 import { NgForm } from "@angular/forms";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { ToastrService } from "ngx-toastr";
+import { Employee } from "src/app/shared/employee.model";
 
 @Component({
   selector: "app-employee",
@@ -21,11 +22,16 @@ export class EmployeeComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    this.firesotre.collection("employee").add(form.value);
+    if (form.value.id == null) {
+      this.firesotre.collection("employee").add(form.value);
+    } else {
+      this.firesotre.doc("employee/" + form.value.id).update(form.value);
+    }
     this.toastr.success("Process has been done..");
     this.restForm(form);
   }
 
+  onEdit(item) {}
   restForm(form?: NgForm) {
     if (form != null) form.resetForm();
     this.service.formData = {
