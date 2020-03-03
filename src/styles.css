@@ -2,3 +2,35 @@
 input.ng-touched.ng-invalid {
   border-color: red;
 }
+
+/* Scrollable Div */
+.scroll-div {
+  overflow: scroll;
+  height: 400px;
+}
+/* Scrollable Div */
+/* Table Fixed Header */
+.tableFixHead {
+  overflow-y: auto;
+  height: 400px;
+  width: 900px;
+}
+.tableFixHead thead th {
+  position: sticky;
+  top: 0;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 80%;
+}
+th,
+td {
+  padding: 8px 16px;
+}
+th {
+  background-color: white;
+}
+
+/* Table Fixed Header */
